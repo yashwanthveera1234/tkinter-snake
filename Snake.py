@@ -35,11 +35,19 @@ class Snake(tk.Canvas):
 
     def create_object(self):
         self.create_text(
-            40,20,text = f"Score {self.score} (speed: {move_speed})", tag="score",fill ="#fff",font=("TkDefaultFont",14)
+            40,20,
+            text = f"Score {self.score} (speed: {move_speed})", 
+            tag="score",fill ="#fff",
+            font=("TkDefaultFont",14)
         )
+        
         for x_position, y_position in self.snake_positions:
             self.create_image(x_position,y_position,image=self.snake_body,tag="snake")
-        self.create_image(self.food_position[0],self.food_position[1],image = self.food,tag="food")# *self.food_position is desturcturimg
+        
+        self.create_image(self.food_position[0],
+                          self.food_position[1],
+                          image = self.food,tag="food")# *self.food_position is desturcturimg
+        
         self.create_rectangle(7,27,593,613,outline = "#525d69")
 
     def move_snake(self):
@@ -98,7 +106,9 @@ class Snake(tk.Canvas):
             self.coords(self.find_withtag("food"),self.food_position)
 
             score = self.find_withtag("score")
-            self.itemconfigure(score,text=f"Score {self.score}(speed: {move_speed})",tag="score")
+            self.itemconfigure(score,
+                               text=f"Score {self.score}(speed: {move_speed})",
+                               tag="score")
 
     def new_food_position(self):
         while True:
